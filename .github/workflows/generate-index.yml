@@ -1,0 +1,54 @@
+name: Generate Doc Index
+
+on:
+  push:
+    paths:
+      - '**.md'
+      - '.github/workflows/generate-index.yml'
+  workflow_dispatch:
+
+jobs:
+  generate-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate index.json
+        run: |
+          python3 << 'EOF'
+          import os, json
+
+          BASE_URL = "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master"
+          pages = []
+
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = sorted(d for d in dirs if not d.startswith('.'))
+              for f in sorted(files):
+                  if not f.endswith('.md'):
+                      continue
+                  rel = os.path.join(root, f).lstrip('./').replace('\\', '/')
+                  title = rel[:-3]
+                  with open(os.path.join(root, f), encoding='utf-8') as fp:
+                      for line in fp:
+                          line = line.strip()
+                          if line.startswith('# '):
+                              title = line[2:].strip()
+                              break
+                  pages.append({"title": title, "url": f"{BASE_URL}/{rel}"})
+
+          with open('index.json', 'w', encoding='utf-8') as fp:
+              json.dump(pages, fp, indent=2, ensure_ascii=False)
+
+          print(f"Generated {len(pages)} pages")
+          for p in pages:
+              print(f"  - {p['title']}")
+          EOF
+
+      - name: Commit index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git diff --staged --quiet || (git commit -m "chore: regenerate index.json [skip ci]" && git push)
