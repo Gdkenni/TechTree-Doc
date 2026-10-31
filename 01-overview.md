@@ -64,4 +64,6 @@ Both **vanilla** and **custom** nodes can use the same customization features.
 
 A custom node can even reproduce a vanilla unlock if needed.
 
-Their main purpose is to create server-specific content, custom items, plugin rewards, profession branches, VIP branches, or progression that does not exist in vanilla Rust.
+Their main purpose is server-specific content: custom items, plugin rewards, profession or VIP branches.
+
+They also cover progression that does not exist in vanilla Rust.

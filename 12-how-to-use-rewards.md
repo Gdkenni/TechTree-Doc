@@ -4,6 +4,8 @@
 
 They can be used on vanilla nodes and custom nodes.
 
+Add them in the `Economy` tab of the node modal, under `Reward`.
+
 ---
 
 ## Reward Types
@@ -35,17 +37,17 @@ Use `ConsoleCommand` when the command normally belongs in the server console.
 
 ## ChatCommand
 
-`ChatCommand` runs as if the player sent a chat command.
+`ChatCommand` sends the command to the player's own console, as if the player typed it there.
 
 Use it for commands that are designed to be executed by the player.
 
-Example:
+To run a chat command, send it through `chat.say`:
 
 ```text
-/kit starter
+chat.say "/kit starter"
 ```
 
-Use `ChatCommand` when another plugin expects the player to run the command from chat.
+Use `ChatCommand` when another plugin expects the player to run the command.
 
 ---
 
@@ -59,6 +61,8 @@ playerID
 
 TechTree replaces `playerID` with the player's Steam ID when the reward is executed.
 
+The placeholder is case-sensitive.
+
 Example:
 
 ```text
@@ -69,11 +73,35 @@ oxide.grant user playerID profession.electrician
 
 ## Economics
 
-`Economics` rewards can give money through the Economics plugin when available.
+`Economics` rewards give money through the Economics plugin when it is loaded.
 
-This is separate from normal node price currency.
+The value is the amount, for example `250`.
 
-Node prices still use item currency in the current source.
+Use a whole number: the decimal separator depends on the server language settings.
+
+This is separate from the node price currency.
+
+Node prices always use item currency.
+
+---
+
+## When Rewards Run
+
+- When the node is unlocked, alone or as part of a path.
+- When the node is unlocked with a prototype.
+- When a player studies a blueprint and the matching vanilla node unlocks automatically.
+
+---
+
+## Tree Completion Rewards
+
+Each tree can also give rewards when a player unlocks **every node** of that tree.
+
+They are set in the data file of the tree, under `Extra`. See **Data Files**.
+
+They are not available in the editor.
+
+They are not triggered by prototypes or blueprint study.
 
 ---
 

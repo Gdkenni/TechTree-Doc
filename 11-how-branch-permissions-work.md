@@ -20,7 +20,7 @@ If `Use Permissions ?` is `false`, branch permissions are not enforced.
 
 ## What A Branch Permission Is
 
-A branch permission is a custom permission typed directly on a node in the editor.
+A branch permission is a custom permission typed in the `Perm` field of the node modal.
 
 Example:
 
@@ -29,6 +29,8 @@ vip.weapons
 ```
 
 If a player does not have the permission, the node and its child branch are locked for that player.
+
+The node is drawn locked, and both the unlock and prototype buttons are disabled.
 
 ---
 
@@ -54,14 +56,14 @@ Both require `Use Permissions ?` to be enabled.
 - Open the **TechTree editor**.
 - Select the first node of the restricted branch.
 - Click `Modify`.
-- Enter your custom permission in the `Permission` field.
+- In the `General` tab, enter your custom permission in the `Perm` field.
 - Click `Confirm`.
 - Save the editor session.
 - Grant the permission to the correct players or groups.
 
 ---
 
-## Permission Placement
+## How Inheritance Works
 
 **Permission on a root node:**
 
@@ -70,10 +72,12 @@ Both require `Use Permissions ?` to be enabled.
 **Permission on a child node:**
 
 - Locks that node and the child branch after it.
+- It replaces the inherited permission, it does not add to it.
 
 **No permission:**
 
-- The node is public unless it inherits a permission from a parent branch.
+- The node uses the first permission found on its parents, then their parents.
+- If none is found, the node is public.
 
 ---
 
@@ -88,10 +92,14 @@ donator.crafting
 
 ---
 
-## Common Mistake
+## Common Mistakes
 
 Typing a permission in the node editor is not enough.
 
 You must also grant that permission with your permission manager.
 
 If the permission is never granted, the branch stays locked for everyone.
+
+TechTree does not register branch permissions.
+
+If your permission manager refuses to grant a permission that does not exist, register it first with another plugin.

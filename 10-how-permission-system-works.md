@@ -8,7 +8,7 @@ TechTree has permission checks controlled by this config option:
 
 When this option is `false`, TechTree permission checks are not enforced.
 
-When this option is `true`, TechTree checks **global permissions** and **branch permissions**.
+When this option is `true`, TechTree checks **global**, **branch** and **subcategory** permissions.
 
 ---
 
@@ -18,8 +18,11 @@ When this option is `true`, TechTree checks **global permissions** and **branch 
 - `techtree.unlock.free` does not apply.
 - `techtree.unlock.instant` does not apply.
 - Branch permissions are not enforced.
+- Subcategory `Permission` conditions are ignored.
 
 This is the simplest setup for public progression.
+
+`Completed category` conditions on subcategories still apply.
 
 ---
 
@@ -29,6 +32,7 @@ This is the simplest setup for public progression.
 - Players with `techtree.unlock.free` unlock nodes for free.
 - Players with `techtree.unlock.instant` skip the unlock timer.
 - Branch permissions are enforced when a node has a custom permission set.
+- Subcategory `Permission` conditions are enforced.
 
 Use this setup if you want restricted access, VIP unlock benefits, or branch restrictions.
 
@@ -40,13 +44,25 @@ Use this setup if you want restricted access, VIP unlock benefits, or branch res
 
 Allows the player to open and use TechTree when permissions are enabled.
 
+Without it, the player sees "You don't have permission."
+
 ### `techtree.unlock.free`
 
-Makes node unlock costs free for players with this permission.
+Makes every unlock cost 0, including prototypes.
+
+It is applied after the `OnNodeUnlockCost` hook of other plugins.
 
 ### `techtree.unlock.instant`
 
 Removes the unlock timer for players with this permission.
+
+---
+
+## Admin Editor
+
+The admin editor is not controlled by a permission.
+
+It is available to **Rust admins** only.
 
 ---
 

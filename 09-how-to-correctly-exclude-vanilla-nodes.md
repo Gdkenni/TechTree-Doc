@@ -37,9 +37,9 @@ If you remove a custom node, it is simply removed from your TechTree data.
 
 ## Step 1: Disable Future Vanilla Imports
 
-Open **Excluded Nodes** and enable `Disable future vanilla imports`.
+Click `Excluded Nodes` in the right panel and enable `Disable future vanilla imports`.
 
-![|272x598](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-sync-excluded-nodes-modal.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/excluded-nodes-modal.png)
 
 This tells TechTree that this workbench tree should stop accepting future vanilla imports.
 
@@ -53,13 +53,15 @@ Select the vanilla node you want to remove.
 
 Click `Modify`.
 
-Enable `Exclude from vanilla sync`.
+In the `General` tab, enable `Exclude from vanilla sync`.
 
-![|272x600](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-sync-node-exclude-toggle.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/node-modal-general.png)
 
 Confirm the edit.
 
 This adds the vanilla ID to the excluded list.
+
+The checkbox takes effect immediately, even if you click `Cancel`.
 
 Do this before removing the node from the tree.
 
@@ -115,12 +117,22 @@ This is usually the cleanest approach when you do not want Rust updates to rebui
 
 The **Excluded Nodes** modal shows which vanilla nodes are currently excluded.
 
+It is only available on the **main tree** of a workbench.
+
 From this modal you can:
 
 - Enable or disable future vanilla imports.
-- Exclude all vanilla nodes.
-- Clear all exclusions.
-- Restore individual excluded nodes.
+- `Exclude All`: add every vanilla node of this workbench to the excluded list.
+- `Clear All`: empty the excluded list.
+- Restore one excluded node with its green check button.
+
+`Exclude All` does not remove nodes from the tree.
+
+`Clear All` and restoring a node do not add nodes back to the tree.
+
+Use `Recover Vanilla Nodes` to add them back. See **Vanilla Sync And Custom Trees**.
+
+These changes are saved with the editor `SAVE` button.
 
 ---
 

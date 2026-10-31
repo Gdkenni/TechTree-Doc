@@ -8,7 +8,7 @@ The important point is simple:
 
 That difference controls what TechTree can synchronize, recover, import, or ignore.
 
-![|420x615](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-sync-tree-branch.png)
+![|420x414](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/vanilla-tree-branch.png)
 
 ---
 
@@ -20,9 +20,9 @@ They have a `vanilla ID`.
 
 That `vanilla ID` allows TechTree to recognize the node later.
 
-![|136x135](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-sync-vanilla-badge-node.png)
+![|116x112](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/vanilla-badge-node.png)
 
-In the editor, a node with the blue certified badge is a **vanilla node**.
+In the editor, a node with the blue badge is a **vanilla node**.
 
 If a node does not have this badge, it is a **custom node**.
 
@@ -87,22 +87,54 @@ This is usually the best setup when you want Rust progression to stay familiar w
 
 ---
 
+## Vanilla Import At Load
+
+Each time the plugin loads, TechTree compares the **main tree** of each workbench with Rust's vanilla tree.
+
+Unless `Disable Future Vanilla Imports` is enabled:
+
+- Vanilla nodes that no longer exist in Rust are removed.
+- Missing vanilla nodes that are not excluded are added.
+
+Subcategories are never affected. See **Subcategories**.
+
+---
+
 ## Auto Vanilla Synchronization
 
 **Auto Vanilla Synchronization** is useful when you want a tree to stay close to vanilla Rust.
 
 ![|276x42](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-sync-auto-toggle.png)
 
-When Rust adds new vanilla nodes, TechTree can import missing vanilla nodes.
+When it is enabled, missing vanilla nodes are placed near their vanilla parent.
 
-When possible, TechTree tries to:
+If the cell is already used, TechTree shifts the node to resolve the conflict.
 
-- Add the missing vanilla node.
-- Place it near its vanilla position.
-- Keep parent relationships valid.
-- Resolve simple placement conflicts.
+When it is disabled, a missing vanilla node whose cell is already used is skipped, with a warning in the server console.
 
 Use this when you want to keep receiving future Facepunch additions automatically.
+
+After each Facepunch update, check the tree layout.
+
+---
+
+## Recover Vanilla Nodes
+
+When vanilla nodes are missing from the main tree and are not excluded, the editor shows `Recover Vanilla Nodes`.
+
+It adds the missing nodes back, after confirmation.
+
+In the editor, a node with a red outline sits where a missing vanilla node should go.
+
+---
+
+## Reset To Vanilla
+
+`Reset to Vanilla` rebuilds the main tree of the workbench from Rust's vanilla tree, after confirmation.
+
+**Important:** the reset is saved immediately, and the current edit session is cancelled.
+
+Unsaved changes on every workbench are lost.
 
 ---
 
@@ -116,7 +148,9 @@ Use it when:
 - You do not want Facepunch updates to change the server progression.
 - You want a stable layout for a wipe or season.
 
-This option is especially important when removing vanilla nodes, but the full removal workflow is explained in **How To Correctly Exclude Vanilla Nodes**.
+This option is especially important when removing vanilla nodes.
+
+The full removal workflow is explained in **How To Correctly Exclude Vanilla Nodes**.
 
 ---
 

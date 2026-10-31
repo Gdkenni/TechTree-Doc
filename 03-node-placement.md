@@ -86,9 +86,9 @@ The result can look confusing because the tree is no longer following the expect
 
 Node position and parent selection are separate.
 
-The `Position` field controls where the node is drawn.
+The node position, changed by drag and drop, controls where the node is drawn.
 
-The `Parent` field controls which node must be unlocked before it.
+The `Parent` field in the node modal controls which node must be unlocked before it.
 
 Changing the position does not change the parent.
 
@@ -105,17 +105,15 @@ You need both:
 
 To clean up a branch:
 
-- Select the node.
-- Click `Modify`.
-- Use the `Position` field.
-- Click `Select`.
-- Pick a better empty cell below its parent.
-- Confirm.
+- Switch to `EDIT MODE`.
+- Drag the node and drop it on a better cell below its parent.
 - Save.
 
-![|150x300](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/node-placement-modify-panel.png)
+Dropping a node on another node swaps the two nodes.
 
-The position selector only allows empty cells when selecting a new position.
+Dropping a node outside the grid puts it back where it was.
+
+Moving a node does not change its parents.
 
 ---
 
@@ -174,14 +172,18 @@ Use `Grid Setting` when you need more room before placing nodes.
 
 ![|280x40](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/node-placement-grid-setting-button.png)
 
-You can expand the grid:
+The modal shows a live preview and the grid size.
+
+Each direction has a `+` button to expand and a `-` button to shrink:
 
 - Up.
 - Down.
 - Left.
 - Right.
 
-You can also shrink empty space or reset bounds from current nodes.
+Shrinking is refused if it would cut off a node.
+
+`RESET` fits the grid to the current nodes, with a one-cell margin.
 
 Expanding the grid before moving a large branch is safer than forcing nodes into a cramped area.
 
@@ -189,11 +191,13 @@ Expanding the grid before moving a large branch is safer than forcing nodes into
 
 ## Update Grid
 
-If nodes are moved near the edge of the current grid bounds, TechTree may show an `Update Grid` action.
+When a node is added, moved or removed on the edge of the grid, TechTree shows an `Update Grid` button.
 
 Use it to refresh the grid bounds from the current node layout.
 
 This keeps the scrollable tree area correctly sized after layout changes.
+
+It also removes any extra space you added with `Grid Setting`.
 
 ---
 

@@ -2,7 +2,9 @@
 
 **TechTree** includes API methods and hooks for other plugins.
 
-These can be used to read player data, restore progression, clear unlocks, block an unlock, or react when a player unlocks a node.
+They can read player data, restore progression, clear unlocks and check tree completion.
+
+Hooks can change prices, block an unlock, or react when a player unlocks a node.
 
 ---
 
@@ -18,21 +20,35 @@ Returns the player's TechTree data in an API-friendly format.
 bool API_SetPlayerData(BasePlayer player, Dictionary<string, object> apiData)
 ```
 
-Imports player TechTree data from an API-friendly dictionary.
+Replaces the player's TechTree data with an API-friendly dictionary.
 
-The plugin cleans invalid node IDs before saving.
+Returns `false` and keeps the existing data if the format is invalid.
+
+Unknown workbenches and node IDs are removed before saving.
 
 ```csharp
 bool API_ClearPlayerWorkbenchData(BasePlayer player, Workbench workbench)
 ```
 
-Clears the player's unlock data only for the provided workbench category.
+Clears the player's unlock data for the provided workbench, subcategories included.
 
 ```csharp
 bool API_ClearPlayerData(BasePlayer player)
 ```
 
 Clears all TechTree unlock data for the player.
+
+```csharp
+bool API_IsTreeComplete(BasePlayer player, Workbench workbench, string subcategoryId)
+```
+
+Returns `true` when the player has unlocked every node of a tree.
+
+Use `null` or an empty string for the main tree, or the subcategory ID (its file name).
+
+These methods do not grant or remove blueprints, and do not run rewards or hooks.
+
+The open TechTree UI is refreshed after a change.
 
 ---
 
@@ -55,6 +71,8 @@ It is also the format expected by `API_SetPlayerData`.
 
 Each workbench key contains a list of unlocked node IDs.
 
+Subcategory nodes are in the same list as the main tree of their workbench.
+
 ---
 
 ## API_GetPlayerData / API_SetPlayerData
@@ -65,14 +83,14 @@ These two calls let you read and write a player's unlocked nodes from another pl
 
 ```csharp
 var data = TechTree?.Call<Dictionary<string, object>>("API_GetPlayerData", player);
-if (data == null) return;
+if (data == null) return; // TechTree not loaded
 
 var workbenches = data["workbench"] as Dictionary<string, object>;
 
 if (workbenches.TryGetValue("Workbench_1", out var raw))
 {
     var unlocked = raw as List<int>;
-    bool hasNode = unlocked?.Any(id => Convert.ToInt32(id) == 47) ?? false;
+    bool hasNode = unlocked?.Contains(47) ?? false;
 }
 ```
 
@@ -105,13 +123,13 @@ var workbenches = data["workbench"] as Dictionary<string, object>;
 if (workbenches.TryGetValue("Workbench_1", out var raw))
 {
     var list = raw as List<int>;
-    list?.RemoveAll(id => Convert.ToInt32(id) == 47);
+    list?.Remove(47);
 }
 
 TechTree.Call<bool>("API_SetPlayerData", player, data);
 ```
 
-> `API_SetPlayerData` also runs cleanup and saves to disk automatically.
+`API_SetPlayerData` also runs cleanup and saves to disk automatically.
 
 ---
 
@@ -122,7 +140,7 @@ TechTree.Call<bool>("API_SetPlayerData", player, data);
 
 private void ClearOpenedWorkbench(BasePlayer player, Workbench workbench)
 {
-    bool success = TechTree?.Call<bool>("API_ClearPlayerWorkbenchData", player, workbench);
+    bool success = TechTree?.Call<bool>("API_ClearPlayerWorkbenchData", player, workbench) ?? false;
 
     if (success)
     {
@@ -133,7 +151,20 @@ private void ClearOpenedWorkbench(BasePlayer player, Workbench workbench)
 
 `API_ClearPlayerWorkbenchData` expects the actual `Workbench` entity instance.
 
-It does not take `Workbench_1` as a string.
+It does not take `"Workbench_1"` as a string.
+
+---
+
+## API_IsTreeComplete
+
+```csharp
+bool mainDone = TechTree?.Call<bool>("API_IsTreeComplete", player, workbench, null) ?? false;
+bool vipDone = TechTree?.Call<bool>("API_IsTreeComplete", player, workbench, "vip_tree") ?? false;
+```
+
+An unknown subcategory ID is treated as the main tree.
+
+An empty tree is never complete.
 
 ---
 
@@ -145,11 +176,11 @@ Hooks that expose a node use a dictionary similar to this:
 {
   "id": 123456,
   "vanillaId": 84,
-  "price": 250,
+  "price": 1,
   "parents": [111111],
   "isVanilla": true,
   "currency": {
-    "itemId": -932201673,
+    "itemId": -143481979,
     "skinId": 0
   }
 }
@@ -158,12 +189,16 @@ Hooks that expose a node use a dictionary similar to this:
 Common values:
 
 - `id`: TechTree node ID.
-- `vanillaId`: Rust vanilla tech tree ID when the node is linked to vanilla.
-- `price`: unlock cost.
+- `vanillaId`: Rust vanilla tech tree ID, or `null` for custom nodes.
+- `price`: node price, after the economy model.
 - `parents`: parent node IDs.
 - `isVanilla`: whether this node is linked to vanilla data.
-- `currency.itemId`: item ID used as currency.
+- `currency.itemId`: item ID used as currency, after the economy model.
 - `currency.skinId`: skin ID used by the currency item.
+
+`price` is the node's own price.
+
+It does not include workbench upgrades, `OnNodeUnlockCost`, free unlocks or Salvage.
 
 Always null-check values when reading hook dictionaries from another plugin.
 
@@ -171,7 +206,7 @@ Always null-check values when reading hook dictionaries from another plugin.
 
 ## Tree Dictionary Format
 
-The alternative unlock hook can also provide the full tree dictionary.
+The alternative unlock hook also provides the tree dictionary.
 
 ```csharp
 {
@@ -180,43 +215,83 @@ The alternative unlock hook can also provide the full tree dictionary.
 }
 ```
 
+`nodes` contains the nodes of the tree currently shown, main tree or subcategory.
+
 ---
 
 ## Plugin Hooks
 
 ```csharp
-OnNodeUnlock(Workbench workbench, Dictionary<string, object> node, BasePlayer player)
+object OnNodeUnlockCost(BasePlayer player, int price)
 ```
 
-Called before a node is unlocked.
+Called when TechTree computes a cost for the player.
+
+Return an `int` to replace the cost. Negative values become 0.
+
+Return `null` to keep the cost.
+
+It receives the total of one currency, after workbench upgrades.
+
+`techtree.unlock.free` is applied after this hook.
+
+It is called when the player selects a node, not at payment time.
+
+```csharp
+object OnNodeUnlock(Workbench workbench, Dictionary<string, object> node, BasePlayer player)
+```
+
+Called before a node is unlocked, normally or with a prototype.
 
 Return `false` to block the unlock.
 
-Return `null` or `true` to allow it.
+Return `true` to allow it and skip the alternative hook below.
+
+Return `null` to let the alternative hook decide.
 
 ```csharp
-OnNodeUnlock(BasePlayer player, Dictionary<string, object> node, Dictionary<string, object> tree)
+object OnNodeUnlock(BasePlayer player, Dictionary<string, object> node, Dictionary<string, object> tree)
 ```
 
-Alternative hook format with the full tree dictionary.
+Alternative hook format with the tree dictionary.
 
 Return `false` to block the unlock.
 
-Return `null` or `true` to allow it.
+Both hooks receive only the node the player clicked, not every node of the path.
 
 ```csharp
-OnNodeUnlocked(Workbench workbench, Dictionary<string, object> node, BasePlayer player)
+void OnNodeUnlocked(Workbench workbench, Dictionary<string, object> node, BasePlayer player)
 ```
 
-Called after a node has been unlocked.
+Called after each unlocked node, once rewards and blueprints have been given.
+
+For a normal unlock, the node dictionary is a snapshot taken when the player clicked.
 
 ```csharp
-OnPathNodeUnlocked(Workbench workbench, List<object> nodes, BasePlayer player)
+void OnPathNodeUnlocked(Workbench workbench, List<object> nodes, BasePlayer player)
 ```
 
-Called after multiple nodes were unlocked through a path unlock.
+Called after several nodes were unlocked through a path unlock.
 
 The `nodes` list contains node dictionaries.
+
+Do not keep a reference to the list: it is released after the call.
+
+It is not called for prototype unlocks.
+
+---
+
+## Example Price Hook
+
+```csharp
+private object OnNodeUnlockCost(BasePlayer player, int price)
+{
+    if (permission.UserHasPermission(player.UserIDString, "myplugin.discount"))
+        return price / 2;
+
+    return null;
+}
+```
 
 ---
 
@@ -252,20 +327,16 @@ private void OnNodeUnlocked(Workbench workbench, Dictionary<string, object> node
 
 ---
 
-## Vanilla Compatible Hooks
+## Vanilla Hooks
 
-TechTree also calls vanilla-compatible hooks for vanilla nodes where possible.
+TechTree no longer calls the vanilla hooks `OnTechTreeNodeUnlock` and `OnTechTreeNodeUnlocked`.
 
-```csharp
-OnTechTreeNodeUnlock(Workbench workbench, TechTreeData.NodeInstance node, BasePlayer player)
-```
+Use the TechTree hooks above instead.
 
-Called before a vanilla-derived node is unlocked.
+---
 
-Return `false` to block the unlock.
+## Good To Know
 
-```csharp
-OnTechTreeNodeUnlocked(Workbench workbench, TechTreeData.NodeInstance node, BasePlayer player, List<ItemDefinition> unlockedItems)
-```
-
-Called after a vanilla-derived node is unlocked.
+- After the player switches workbench tabs, the `workbench` argument can be a template workbench.
+- In that case it is not the workbench the player is using.
+- Branch and subcategory permissions are not registered by TechTree.
