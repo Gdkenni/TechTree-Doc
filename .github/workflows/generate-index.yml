@@ -20,7 +20,7 @@ jobs:
           python3 << 'EOF'
           import os, json
 
-          BASE_URL = "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master"
+          BASE_URL = f"https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/{os.environ.get('GITHUB_REF_NAME', 'master')}"
           pages = []
 
           for root, dirs, files in os.walk('.'):
