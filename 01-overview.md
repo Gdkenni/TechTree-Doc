@@ -8,15 +8,18 @@ It lets server owners customize progression without forcing every change into Ru
 
 ## Main Features
 
-- Editable **workbench tech trees**.
+- Editable **workbench tech trees**, built in game with the admin editor.
+- **Subcategories**: extra trees shown as tabs under each workbench level.
 - Support for **vanilla nodes** and **custom nodes**.
 - `Item`, `Url`, and `Local` node images.
-- Custom prices and currencies.
+- Prices by item rarity or custom prices, with any item as currency.
+- Two economy models: **Legacy** (scrap) and **Blueprints** (fragments, pages, books).
+- Workbench upgrades support: cost multiplier, **Salvage** and **Prototype**.
 - Node rewards.
-- Branch permissions.
-- Player unlock tracking.
+- Branch permissions and subcategory access conditions.
+- Player unlock tracking, synced with learned blueprints.
 - Vanilla synchronization tools.
-- Admin editor directly in game.
+- Themes and node styles.
 - API methods and hooks for other plugins.
 
 ---
@@ -28,7 +31,9 @@ It lets server owners customize progression without forcing every change into Ru
 - `Workbench_3`.
 - `Engineering`.
 
-Each category has its own saved tree data.
+Each category has its own main tree.
+
+Each category can also have its own **subcategories**.
 
 ---
 
@@ -48,7 +53,7 @@ They belong only to TechTree data and are not restored by vanilla synchronizatio
 
 Both **vanilla** and **custom** nodes can use the same customization features.
 
-- Price.
+- Price and rarity.
 - Currency.
 - Parent nodes.
 - Permissions.
