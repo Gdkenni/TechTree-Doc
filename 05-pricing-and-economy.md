@@ -27,7 +27,7 @@ Set the rarity in the `Economy` tab of the node modal. See **Admin Editor**.
 
 Open it with the gear button next to `Rarity` in the `Economy` tab.
 
-![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/rarity-prices-panel.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/rarity-prices-panel.png)
 
 - `Economy model`: `Legacy` or `Blueprints`.
 - One price per rarity.
@@ -75,7 +75,7 @@ In both models:
 - Nodes with a currency other than standard scrap are never changed.
 - Switching models does not rewrite your saved data.
 
-![|220x604](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/player-blueprints-cost.png)
+![|220x604](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/player-blueprints-cost.png)
 
 ---
 

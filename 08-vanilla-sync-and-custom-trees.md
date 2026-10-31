@@ -8,7 +8,7 @@ The important point is simple:
 
 That difference controls what TechTree can synchronize, recover, import, or ignore.
 
-![|420x414](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/vanilla-tree-branch.png)
+![|420x414](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-tree-branch.png)
 
 ---
 
@@ -20,7 +20,7 @@ They have a `vanilla ID`.
 
 That `vanilla ID` allows TechTree to recognize the node later.
 
-![|116x112](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/vanilla-badge-node.png)
+![|116x112](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/vanilla-badge-node.png)
 
 In the editor, a node with the blue badge is a **vanilla node**.
 

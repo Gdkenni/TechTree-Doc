@@ -4,7 +4,7 @@
 
 The editor is designed so you can adjust progression without manually editing JSON files for every change.
 
-![|640x360](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/editor-overview.png)
+![|640x360](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/editor-overview.png)
 
 ---
 
@@ -68,7 +68,7 @@ Click an empty cell to select it, then click `Add` to create a node there.
 
 Click a node to select it, then click `Modify` or `Remove`.
 
-![|278x250](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/editor-right-panel-node-selected.png)
+![|278x250](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/editor-right-panel-node-selected.png)
 
 `Remove` is immediate, without confirmation.
 
@@ -96,7 +96,7 @@ Changes are previewed live on the tree.
 
 ## General Tab
 
-![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/node-modal-general.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/node-modal-general.png)
 
 - `Parent`: click `+`, then click the nodes that must be unlocked first. Click `x` on a parent to remove it.
 - `Perm`: branch permission. Leave empty for public access. See **How Branch Permissions Work**.
@@ -123,7 +123,7 @@ If a field is empty, the in-game item name or description is used.
 
 ## Economy Tab
 
-![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/node-modal-economy.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/node-modal-economy.png)
 
 - `Rarity`: `Custom`, `None`, `Common`, `Uncommon`, `Rare` or `VeryRare`.
 - The gear button opens the rarity prices panel.

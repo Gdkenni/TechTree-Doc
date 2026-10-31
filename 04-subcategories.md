@@ -6,7 +6,7 @@ Each workbench keeps its **main tree**, and can have as many subcategories as yo
 
 Use them for themed branches, professions, VIP trees, or progression unlocked later.
 
-![|430x60](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/subcategory-tabs-edit.png)
+![|430x60](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/subcategory-tabs-edit.png)
 
 ---
 
@@ -26,7 +26,7 @@ A new subcategory starts empty.
 
 Select the subcategory tab, then click the orange tools button.
 
-![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/subcategory-settings.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/subcategory-settings.png)
 
 - `Title`: name of the tab, up to 32 characters.
 - `Order`: position of the tab. The main tree always stays first.
@@ -59,7 +59,7 @@ The file is deleted when you click `SAVE`.
 
 Admins always see and edit every subcategory.
 
-![|320x60](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/subcategory-locked-tab-player.png)
+![|320x60](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/subcategory-locked-tab-player.png)
 
 ---
 
@@ -71,7 +71,7 @@ A player must meet **all** the conditions.
 
 **Permission**
 
-![|278x185](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/subcategory-condition-permission.png)
+![|278x185](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/subcategory-condition-permission.png)
 
 - The player needs this permission.
 - It requires `Use Permissions ?` set to `true` in the config.
@@ -79,7 +79,7 @@ A player must meet **all** the conditions.
 
 **Completed category**
 
-![|278x185](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/subcategory-condition-completed.png)
+![|278x185](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/subcategory-condition-completed.png)
 
 - The player must have unlocked every node of another tree.
 - Choose the `Workbench`, then the `Category`: `Main tree` or a subcategory.

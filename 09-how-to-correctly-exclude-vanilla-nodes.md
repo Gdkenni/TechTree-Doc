@@ -39,7 +39,7 @@ If you remove a custom node, it is simply removed from your TechTree data.
 
 Click `Excluded Nodes` in the right panel and enable `Disable future vanilla imports`.
 
-![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/excluded-nodes-modal.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/excluded-nodes-modal.png)
 
 This tells TechTree that this workbench tree should stop accepting future vanilla imports.
 
@@ -55,7 +55,7 @@ Click `Modify`.
 
 In the `General` tab, enable `Exclude from vanilla sync`.
 
-![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/node-modal-general.png)
+![|272x592](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/images/node-modal-general.png)
 
 Confirm the edit.
 
