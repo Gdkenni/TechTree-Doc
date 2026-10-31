@@ -44,7 +44,7 @@ Use this setup if you want restricted access, VIP unlock benefits, or branch res
 
 Allows the player to open and use TechTree when permissions are enabled.
 
-Without it, the player sees "You don't have permission."
+Without it, the player sees the message **You don't have permission.**
 
 ### `techtree.unlock.free`
 

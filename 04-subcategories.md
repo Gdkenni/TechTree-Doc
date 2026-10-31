@@ -74,7 +74,7 @@ A player must meet **all** the conditions.
 ![|278x185](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/subcategory-condition-permission.png)
 
 - The player needs this permission.
-- It requires `"Use Permissions ?": true` in the config.
+- It requires `Use Permissions ?` set to `true` in the config.
 - If permissions are disabled, an orange note says the condition has no effect.
 
 **Completed category**

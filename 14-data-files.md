@@ -105,7 +105,11 @@ Tree completion rewards example:
 - `Curency` is the real key name, with one `r`.
 - Reward types: `ChatCommand`, `ConsoleCommand`, `Economics`.
 
-Old files with a plain number as price, like `"Price": 60`, are still accepted.
+Old files with a plain number as price are still accepted:
+
+```json
+"Price": 60
+```
 
 ---
 

@@ -151,7 +151,7 @@ private void ClearOpenedWorkbench(BasePlayer player, Workbench workbench)
 
 `API_ClearPlayerWorkbenchData` expects the actual `Workbench` entity instance.
 
-It does not take `"Workbench_1"` as a string.
+It does not take the name `Workbench_1` as a string.
 
 ---
 

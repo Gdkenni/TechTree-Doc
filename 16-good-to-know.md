@@ -108,7 +108,7 @@ Use them for content that does not exist in vanilla Rust.
 
 Use `ConsoleCommand` for server-side commands.
 
-Use `ChatCommand` for commands the player runs, for example `chat.say "/kit starter"`.
+Use `ChatCommand` for commands the player runs. See **How To Use Rewards** for chat commands.
 
 Use the `playerID` placeholder when the command needs the player's Steam ID.
 

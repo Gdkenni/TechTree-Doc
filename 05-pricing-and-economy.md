@@ -75,7 +75,7 @@ In both models:
 - Nodes with a currency other than standard scrap are never changed.
 - Switching models does not rewrite your saved data.
 
-![|315x865](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/player-blueprints-cost.png)
+![|220x604](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/player-blueprints-cost.png)
 
 ---
 

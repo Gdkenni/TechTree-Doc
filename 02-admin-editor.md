@@ -4,7 +4,7 @@
 
 The editor is designed so you can adjust progression without manually editing JSON files for every change.
 
-![|960x540](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/editor-overview.png)
+![|640x360](https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/images/editor-overview.png)
 
 ---
 
