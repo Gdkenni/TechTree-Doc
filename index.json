@@ -12,8 +12,20 @@
     "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/03-node-placement.md"
   },
   {
+    "title": "Subcategories",
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/04-subcategories.md"
+  },
+  {
+    "title": "Pricing And Economy",
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/05-pricing-and-economy.md"
+  },
+  {
     "title": "Local Images",
     "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/06-local-images.md"
+  },
+  {
+    "title": "Themes And Node Styles",
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/07-themes-and-node-styles.md"
   },
   {
     "title": "Vanilla Sync And Custom Trees",
@@ -46,5 +58,9 @@
   {
     "title": "API And Hooks",
     "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/15-api-and-hooks.md"
+  },
+  {
+    "title": "Good To Know",
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/16-good-to-know.md"
   }
 ]
