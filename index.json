@@ -1,66 +1,66 @@
 [
   {
     "title": "TechTree Overview",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/01-overview.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/01-overview.md"
   },
   {
     "title": "Admin Editor",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/02-admin-editor.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/02-admin-editor.md"
   },
   {
     "title": "Node Placement And Lines",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/03-node-placement.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/03-node-placement.md"
   },
   {
     "title": "Subcategories",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/04-subcategories.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/04-subcategories.md"
   },
   {
     "title": "Pricing And Economy",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/05-pricing-and-economy.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/05-pricing-and-economy.md"
   },
   {
     "title": "Local Images",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/06-local-images.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/06-local-images.md"
   },
   {
     "title": "Themes And Node Styles",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/07-themes-and-node-styles.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/07-themes-and-node-styles.md"
   },
   {
     "title": "Vanilla Sync And Custom Trees",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/08-vanilla-sync-and-custom-trees.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/08-vanilla-sync-and-custom-trees.md"
   },
   {
     "title": "How To Correctly Exclude Vanilla Nodes",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/09-how-to-correctly-exclude-vanilla-nodes.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/09-how-to-correctly-exclude-vanilla-nodes.md"
   },
   {
     "title": "How Permission System Works",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/10-how-permission-system-works.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/10-how-permission-system-works.md"
   },
   {
     "title": "How Branch Permissions Work",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/11-how-branch-permissions-work.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/11-how-branch-permissions-work.md"
   },
   {
     "title": "How To Use Rewards",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/12-how-to-use-rewards.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/12-how-to-use-rewards.md"
   },
   {
     "title": "Configuration",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/13-configuration.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/13-configuration.md"
   },
   {
     "title": "Data Files",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/14-data-files.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/14-data-files.md"
   },
   {
     "title": "API And Hooks",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/15-api-and-hooks.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/15-api-and-hooks.md"
   },
   {
     "title": "Good To Know",
-    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/2.4.9/16-good-to-know.md"
+    "url": "https://raw.githubusercontent.com/Gdkenni/TechTree-Doc/master/16-good-to-know.md"
   }
 ]
